@@ -2,7 +2,5 @@
 
 set -eoux pipefail
 
-rm --recursive --force /buildroot/build; mkdir /buildroot/build; cd /buildroot/build
-
-cmake -G Ninja /temporary/code
-cmake .
+cmake -G Ninja -S /temporary/code -B /buildroot/build
+cmake --build /buildroot/build

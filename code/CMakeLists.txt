@@ -7,6 +7,16 @@ project(
   )
 
 set (CMAKE_CXX_STANDARD 17)
-add_compile_options(-Wall -Wextra -Wpedantic)
+add_compile_options(-Werror -Wall -Wextra -Wpedantic)
 
-add_library(lib${PROJECT_NAME} src/cost_functions.cpp)
+set(SRC_FILES 
+    src/cost_functions.cpp
+)
+
+add_library(lib${PROJECT_NAME} SHARED
+    ${SRC_FILES}
+)
+
+target_include_directories(lib${PROJECT_NAME} PRIVATE 
+    include
+)
