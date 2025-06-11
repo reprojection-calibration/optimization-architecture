@@ -2,7 +2,7 @@
 
 namespace reprojection_calibration::optimization_architecture {
 
-void Delete() {
+void DeleteXxx() {
   int const i{0};
   static_cast<void>(i);
 }

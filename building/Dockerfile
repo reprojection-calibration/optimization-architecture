@@ -22,3 +22,5 @@ RUN --mount=type=bind,source=${BUILD_LIBRARY},target=/temporary/${BUILD_LIBRARY}
 
 
 FROM base-stage AS development-stage
+
+RUN apt-get update; apt-get install --no-install-recommends --yes gdb; rm --force --recursive /var/lib/apt/lists/*

@@ -2,6 +2,6 @@
 
 namespace reprojection_calibration::optimization_architecture {
 
-void Delete();
+void DeleteXxx();
 
 } // namespace reprojection_calibration::optimization_architecture
