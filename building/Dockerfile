@@ -18,7 +18,7 @@ FROM base-stage AS build-stage
 ARG BUILD_LIBRARY=building/scripts/build_library.sh
 RUN --mount=type=bind,source=${BUILD_LIBRARY},target=/temporary/${BUILD_LIBRARY} \
     --mount=type=bind,source=code/,target=/temporary/code \
-    /temporary/${BUILD_LIBRARY}
+    /temporary/${BUILD_LIBR
 
 
 FROM base-stage AS development-stage
