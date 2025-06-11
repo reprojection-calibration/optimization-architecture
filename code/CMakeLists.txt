@@ -13,10 +13,10 @@ set(SRC_FILES
     src/cost_functions.cpp
 )
 
-add_library(lib${PROJECT_NAME} SHARED
+add_library(${PROJECT_NAME} SHARED
     ${SRC_FILES}
 )
 
-target_include_directories(lib${PROJECT_NAME} PRIVATE 
+target_include_directories(${PROJECT_NAME} PRIVATE 
     include
 )
