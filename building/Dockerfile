@@ -12,6 +12,10 @@ ARG INSTALL_BUILD_DEPENDENCIES=building/install_scripts/install_build_dependenci
 RUN --mount=type=bind,source=${INSTALL_BUILD_DEPENDENCIES},target=/temporary/${INSTALL_BUILD_DEPENDENCIES} \
     /temporary/${INSTALL_BUILD_DEPENDENCIES}
 
+ARG INSTALL_LIBRARY_DEPENDENCIES=building/install_scripts/install_library_dependencies.sh
+RUN --mount=type=bind,source=${INSTALL_LIBRARY_DEPENDENCIES},target=/temporary/${INSTALL_LIBRARY_DEPENDENCIES} \
+    /temporary/${INSTALL_LIBRARY_DEPENDENCIES}
+
 
 FROM base-stage AS build-stage
 
