@@ -4,7 +4,4 @@
 
 using namespace reprojection_calibration::optimization_architecture;
 
-TEST(TestCostFunctions, DeleteDoesNothing) {
-  EXPECT_NO_THROW(DeleteXxx());
-  EXPECT_NE(0, 0);
-}
+TEST(TestCostFunctions, DeleteDoesNothing) { EXPECT_NO_THROW(DeleteXxx()); }
