@@ -5,39 +5,37 @@
 namespace reprojection_calibration::optimization_architecture {
 
 struct OneParameterCostFunction {
-  OneParameterCostFunction(double const data) : data_{data} {}
+    OneParameterCostFunction(double const data) : data_{data} {}
 
-  template <typename T>
-  bool operator()(const T *const x, T *const residual) const {
-    residual[0] = data_ - x[0];
+    template <typename T>
+    bool operator()(const T* const x, T* const residual) const {
+        residual[0] = data_ - x[0];
 
-    return true;
-  }
+        return true;
+    }
 
-  static ceres::CostFunction *Create(double const data) {
-    return new ceres::AutoDiffCostFunction<OneParameterCostFunction, 1, 1>(
-        new OneParameterCostFunction(data));
-  }
+    static ceres::CostFunction* Create(double const data) {
+        return new ceres::AutoDiffCostFunction<OneParameterCostFunction, 1, 1>(new OneParameterCostFunction(data));
+    }
 
-  double data_;
+    double data_;
 };
 
 struct TwoParameterCostFunction {
-  TwoParameterCostFunction(double const data) : data_{data} {}
+    TwoParameterCostFunction(double const data) : data_{data} {}
 
-  template <typename T>
-  bool operator()(const T *const x, T *const residual) const {
-    residual[0] = data_ - x[0] - x[1];
+    template <typename T>
+    bool operator()(const T* const x, T* const residual) const {
+        residual[0] = data_ - x[0] - x[1];
 
-    return true;
-  }
+        return true;
+    }
 
-  static ceres::CostFunction *Create(double const data) {
-    return new ceres::AutoDiffCostFunction<TwoParameterCostFunction, 1, 2>(
-        new TwoParameterCostFunction(data));
-  }
+    static ceres::CostFunction* Create(double const data) {
+        return new ceres::AutoDiffCostFunction<TwoParameterCostFunction, 1, 2>(new TwoParameterCostFunction(data));
+    }
 
-  double data_;
+    double data_;
 };
 
-} // namespace reprojection_calibration::optimization_architecture
+}  // namespace reprojection_calibration::optimization_architecture

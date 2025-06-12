@@ -12,7 +12,6 @@ add_compile_options(-Werror -Wall -Wextra -Wpedantic)
 find_package(Ceres REQUIRED)
 
 set(SRC_FILES
-        src/cost_functions.cpp
         src/optimizer_handler.cpp
 )
 add_library(${PROJECT_NAME} SHARED
