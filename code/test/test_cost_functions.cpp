@@ -29,8 +29,7 @@ TEST(TestCostFunctions, TwoParameterCostFunctionResidual) {
 // evaluate should be tested when there is interest and time :)
 TEST(TestCostFunctions, OneParameterCostFunctionCreate) {
   double const parameter{10.0};
-  ceres::CostFunction const *const cost_function{
-      OneParameterCostFunction::Create(parameter)};
+  ceres::CostFunction const *const cost_function{OneParameterCostFunction::Create(parameter)};
 
   EXPECT_EQ(std::size(cost_function->parameter_block_sizes()), 1);
   EXPECT_EQ(cost_function->parameter_block_sizes()[0], 1);
@@ -48,8 +47,7 @@ TEST(TestCostFunctions, OneParameterCostFunctionCreate) {
 
 TEST(TestCostFunctions, TwoParameterCostFunctionCreate) {
   double const parameter{10.0};
-  ceres::CostFunction const *const cost_function{
-      TwoParameterCostFunction::Create(parameter)};
+  ceres::CostFunction const *const cost_function{TwoParameterCostFunction::Create(parameter)};
 
   EXPECT_EQ(std::size(cost_function->parameter_block_sizes()), 1);
   EXPECT_EQ(cost_function->parameter_block_sizes()[0], 2);

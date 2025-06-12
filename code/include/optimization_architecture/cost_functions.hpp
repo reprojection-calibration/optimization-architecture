@@ -15,8 +15,7 @@ struct OneParameterCostFunction {
   }
 
   static ceres::CostFunction *Create(double const data) {
-    return new ceres::AutoDiffCostFunction<OneParameterCostFunction, 1, 1>(
-        new OneParameterCostFunction(data));
+    return new ceres::AutoDiffCostFunction<OneParameterCostFunction, 1, 1>(new OneParameterCostFunction(data));
   }
 
   double data_;
@@ -33,11 +32,10 @@ struct TwoParameterCostFunction {
   }
 
   static ceres::CostFunction *Create(double const data) {
-    return new ceres::AutoDiffCostFunction<TwoParameterCostFunction, 1, 2>(
-        new TwoParameterCostFunction(data));
+    return new ceres::AutoDiffCostFunction<TwoParameterCostFunction, 1, 2>(new TwoParameterCostFunction(data));
   }
 
   double data_;
 };
 
-} // namespace reprojection_calibration::optimization_architecture
+}  // namespace reprojection_calibration::optimization_architecture
