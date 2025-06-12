@@ -9,9 +9,9 @@ struct OneParameterCostFunction {
 
   template <typename T>
   bool operator()(const T *const x, T *const residual) const {
-    residual[0] = data_ - x[0];
+      residual[0] = data_ - x[0];
 
-    return true;
+      return true;
   }
 
   static ceres::CostFunction *Create(double const data) {
