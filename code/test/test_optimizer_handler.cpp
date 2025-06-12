@@ -1,14 +1,21 @@
 #include <gtest/gtest.h>
 
+#include "optimization_architecture/cost_functions.hpp"
 #include "optimization_architecture/optimizer_handler.hpp"
 
 using namespace reprojection_calibration::optimization_architecture;
 
-TEST(TestOptimizerHanlder, ParameterOverrides) {
+TEST(TestOptimizerHandler, ParameterOverrides) {
   OneParameterCamera one_parameter{10.0};
   EXPECT_NEAR(*one_parameter.GetParameterPtr(), 10.0, 1e-12);
 
   TwoParameterCamera two_parameter{{6.0, 4.0}};
   EXPECT_NEAR(two_parameter.GetParameterPtr()[0], 6.0, 1e-12);
   EXPECT_NEAR(two_parameter.GetParameterPtr()[1], 4.0, 1e-12);
+}
+
+TEST(TestOptimizerHandler, OptimizerHandlerCall) {
+  double const data{10.0};
+  OneParameterCamera one_parameter{10.0};
+  OptimizerHandler(data, &one_parameter, &OneParameterCostFunction::Create);
 }

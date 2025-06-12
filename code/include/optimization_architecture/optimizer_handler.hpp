@@ -1,6 +1,8 @@
 #pragma once
 
 #include <array>
+#include <ceres/ceres.h>
+#include <functional>
 
 namespace reprojection_calibration::optimization_architecture {
 
@@ -11,7 +13,8 @@ public:
 
 class OneParameterCamera : public CameraParameters {
 public:
-  explicit OneParameterCamera(double const parameter) : one_parameter_{parameter} {}
+  explicit OneParameterCamera(double const parameter)
+      : one_parameter_{parameter} {}
 
   double *GetParameterPtr() override { return &one_parameter_; }
 
@@ -29,5 +32,13 @@ public:
 private:
   std::array<double, 2> two_parameter_;
 };
+
+void OptimizerHandler(
+    double const data, CameraParameters *const camera_parameters,
+    std::function<ceres::CostFunction *(double)> cost_function_factory) {
+  static_cast<void>(data);
+  static_cast<void>(camera_parameters);
+  static_cast<void>(cost_function_factory);
+}
 
 } // namespace reprojection_calibration::optimization_architecture
