@@ -16,6 +16,17 @@ ARG INSTALL_LIBRARY_DEPENDENCIES=building/install_scripts/install_library_depend
 RUN --mount=type=bind,source=${INSTALL_LIBRARY_DEPENDENCIES},target=/temporary/${INSTALL_LIBRARY_DEPENDENCIES} \
     /temporary/${INSTALL_LIBRARY_DEPENDENCIES}
 
+FROM configuration-stage AS code-checks-stage
+
+ARG INSTALL_CODE_CHECK_DEPENDENCIES=building/install_scripts/install_code_check_dependencies.sh
+RUN --mount=type=bind,source=${INSTALL_CODE_CHECK_DEPENDENCIES},target=/temporary/${INSTALL_CODE_CHECK_DEPENDENCIES} \
+    /temporary/${INSTALL_CODE_CHECK_DEPENDENCIES}
+
+ARG CODE_CHECKS=building/scripts/code_checks.sh
+RUN --mount=type=bind,source=${CODE_CHECKS},target=/temporary/${CODE_CHECKS} \
+    --mount=type=bind,source=.clang-format,target=/temporary/.clang-format \
+    --mount=type=bind,source=code/,target=/temporary/code\
+    /temporary/${CODE_CHECKS}
 
 FROM base-stage AS build-stage
 
