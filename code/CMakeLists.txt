@@ -9,6 +9,8 @@ project(
 set(CMAKE_CXX_STANDARD 17)
 add_compile_options(-Werror -Wall -Wextra -Wpedantic)
 
+find_package(Ceres REQUIRED)
+
 set(SRC_FILES
         src/cost_functions.cpp
 )
@@ -17,6 +19,9 @@ add_library(${PROJECT_NAME} SHARED
 )
 target_include_directories(${PROJECT_NAME} PRIVATE
         include
+)
+target_link_libraries(${PROJECT_NAME}
+        Ceres::ceres
 )
 
 include(FetchContent)
