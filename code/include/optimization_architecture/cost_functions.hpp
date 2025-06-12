@@ -27,7 +27,7 @@ struct TwoParameterCostFunction {
 
   template <typename T>
   bool operator()(const T *const x, T *const residual) const {
-    residual[0] = 10.0 - x[0] - x[1];
+    residual[0] = data_ - x[0] - x[1];
 
     return true;
   }

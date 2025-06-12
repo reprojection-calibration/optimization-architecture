@@ -13,6 +13,7 @@ find_package(Ceres REQUIRED)
 
 set(SRC_FILES
         src/cost_functions.cpp
+        src/optimizer_handler.cpp
 )
 add_library(${PROJECT_NAME} SHARED
         ${SRC_FILES}
@@ -35,6 +36,7 @@ include(GoogleTest)
 
 set(TESTS
         test_cost_functions
+        test_optimizer_handler
 )
 foreach(TEST IN LISTS TESTS)
     add_executable(${TEST} test/${TEST}.cpp)
