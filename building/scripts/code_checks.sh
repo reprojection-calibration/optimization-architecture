@@ -6,4 +6,4 @@ set -eoux pipefail
 
 find /temporary/code -iname '*.hpp' -o -iname '*.cpp' | xargs clang-format --dry-run --Werror
 
-cppcheck /temporary/code -I /temporary/code/include -i cmake-build-* --error-exitcode=1 --enable=all --suppress=missingIncludeSystem
+cppcheck /temporary/code -I /temporary/code/include  --error-exitcode=1 --enable=all --suppress=missingIncludeSystem
