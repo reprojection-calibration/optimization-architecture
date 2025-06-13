@@ -25,7 +25,8 @@ RUN --mount=type=bind,source=${INSTALL_CODE_CHECK_DEPENDENCIES},target=/temporar
 ARG CODE_CHECKS=building/scripts/code_checks.sh
 RUN --mount=type=bind,source=${CODE_CHECKS},target=/temporary/${CODE_CHECKS} \
     --mount=type=bind,source=.clang-format,target=/temporary/.clang-format \
-    --mount=type=bind,source=code/,target=/temporary/code\
+    --mount=type=bind,source=building/,target=/temporary/building \
+    --mount=type=bind,source=code/,target=/temporary/code \
     /temporary/${CODE_CHECKS}
 
 FROM base-stage AS build-stage
