@@ -19,18 +19,20 @@ while getopts ":t:" opt; do
 done
 
 IMAGE=optimization-architecture
-SCRIPT_FOLDER=$(dirname $(realpath -s $0))
+SCRIPT_FOLDER="$(dirname "$(realpath -s "$0")")"
 TAG=${IMAGE}:${TARGET_STAGE}
 
 echo "Building image with tag '$TAG' targeting stage '$TARGET_STAGE'..."
 DOCKER_BUILDKIT=1 docker build \
-    --target ${TARGET_STAGE}-stage \
-    --tag ${TAG} \
-    --file ${SCRIPT_FOLDER}/../Dockerfile \
+    --file "${SCRIPT_FOLDER}"/../Dockerfile \
+    --tag "${TAG}" \
+    --target "${TARGET_STAGE}"-stage \
     --progress=plain \
-    ${SCRIPT_FOLDER}/../../
+    "${SCRIPT_FOLDER}"/../../
 
-if [ $? -eq 0 ]; then
+BUILD_SUCCESSFUL=$?
+
+if [ ${BUILD_SUCCESSFUL} -eq 0 ]; then
     echo "Build successful: ${TAG}"
 else
     echo "Build failed"

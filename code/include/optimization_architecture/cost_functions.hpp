@@ -5,7 +5,7 @@
 namespace reprojection_calibration::optimization_architecture {
 
 struct OneParameterCostFunction {
-    OneParameterCostFunction(double const data) : data_{data} {}
+    explicit OneParameterCostFunction(double const data) : data_{data} {}
 
     template <typename T>
     bool operator()(const T* const x, T* const residual) const {
@@ -22,7 +22,7 @@ struct OneParameterCostFunction {
 };
 
 struct TwoParameterCostFunction {
-    TwoParameterCostFunction(double const data) : data_{data} {}
+    explicit TwoParameterCostFunction(double const data) : data_{data} {}
 
     template <typename T>
     bool operator()(const T* const x, T* const residual) const {
