@@ -24,9 +24,9 @@ TAG=${IMAGE}:${TARGET_STAGE}
 
 echo "Building image with tag '$TAG' targeting stage '$TARGET_STAGE'..."
 DOCKER_BUILDKIT=1 docker build \
-    --target ${TARGET_STAGE}-stage \
-    --tag ${TAG} \
     --file ${SCRIPT_FOLDER}/../Dockerfile \
+    --tag ${TAG} \
+    --target ${TARGET_STAGE}-stage \
     --progress=plain \
     ${SCRIPT_FOLDER}/../../
 
