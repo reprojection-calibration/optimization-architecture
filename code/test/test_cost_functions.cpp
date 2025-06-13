@@ -8,7 +8,7 @@ TEST(TestCostFunctions, OneParameterCostFunctionResidual) {
     double const parameter{10.0};
     OneParameterCostFunction const cost_function{parameter};
 
-    double residual;
+    double residual{};
     cost_function.operator()<double>(&parameter, &residual);
 
     EXPECT_NEAR(residual, 0.0, 1e-6);
@@ -18,7 +18,7 @@ TEST(TestCostFunctions, TwoParameterCostFunctionResidual) {
     std::array<double, 2> const parameters{6.0, 4.0};
     TwoParameterCostFunction const cost_function{parameters[0] + parameters[1]};
 
-    double residual;
+    double residual{};
     cost_function.operator()<double>(parameters.data(), &residual);
 
     EXPECT_NEAR(residual, 0.0, 1e-6);
