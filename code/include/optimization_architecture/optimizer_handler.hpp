@@ -29,8 +29,8 @@ class TwoParameterCamera : public CameraParameters {
     double* GetParameterPtr() override { return two_parameter_.data(); }
 
    private:
-    std::array<double, 2> two_parameter_
-
+    std::array<double, 2> two_parameter_;
+};
 
 void OptimizerHandler(double const data, CameraParameters* const camera_parameters,
                       std::function<ceres::CostFunction*(double)> cost_function_factory);
